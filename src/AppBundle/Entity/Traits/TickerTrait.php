@@ -5,42 +5,37 @@ namespace AppBundle\Entity\Traits;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Title trait
+ * Ticker trait
  *
  * @category Trait
  * @package  AppBundle\Entity\Traits
  * @author   Anton Serra <aserratorta@gmail.com>
  */
-Trait TitleTrait
+Trait TickerTrait
 {
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=10, unique=true)
      */
-    private $title;
+    private $ticker;
 
     /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return $this
+     * @return string
      */
-    public function setTitle($title)
+    public function getTicker()
     {
-        $this->title = $title;
+        return $this->ticker;
+    }
 
+    /**
+     * @param string $ticker
+     * @return TickerTrait
+     */
+    public function setTicker($ticker)
+    {
+        $this->ticker = $ticker;
         return $this;
     }
 
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
 }

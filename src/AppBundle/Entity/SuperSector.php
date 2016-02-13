@@ -1,15 +1,26 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: anton
- * Date: 13/2/16
- * Time: 16:13
- */
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Traits\TickerTrait;
+use AppBundle\Entity\Traits\TitleTrait;
+use Doctrine\ORM\Mapping as ORM;
 
+
+/**
+ * SuperSector Entity Class
+ *
+ * @category Entity
+ * @package  AppBundle\Entity
+ * @author   Anton Serra <aserratorta@gmail.com>
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\SuperSectorRepository")
+ */
 class SuperSector
 {
+    use TickerTrait;
+
+    use TitleTrait;
 
 }

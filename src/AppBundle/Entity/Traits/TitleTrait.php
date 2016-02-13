@@ -1,15 +1,46 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: anton
- * Date: 13/2/16
- * Time: 19:19
- */
 
 namespace AppBundle\Entity\Traits;
 
+use Doctrine\ORM\Mapping as ORM;
 
-class TitleTrait
+/**
+ * Title trait
+ *
+ * @category Trait
+ * @package  AppBundle\Entity\Traits
+ * @author   Anton Serra <aserratorta@gmail.com>
+ */
+Trait TitleTrait
 {
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $title;
 
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return $this
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 }
