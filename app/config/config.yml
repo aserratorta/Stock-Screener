@@ -58,13 +58,17 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
 
-# Stof
+# Stof Doctrine Extensions
 stof_doctrine_extensions:
-    default_locale: "%locale%"
+    default_locale:       "%locale%"
     orm:
         default:
-            timestampable: true
-            sluggable: true
+            softdeleteable: false
+            timestampable:  true
+            sluggable:      false
+            translatable:   false
+            sortable:       false
+            tree:           false
 
 # Swiftmailer Configuration
 swiftmailer:
