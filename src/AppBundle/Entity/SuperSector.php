@@ -6,7 +6,7 @@ use AppBundle\Entity\Traits\TickerTrait;
 use AppBundle\Entity\Traits\TitleTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * SuperSector Entity Class
@@ -21,20 +21,28 @@ use Doctrine\Common\Collections\ArrayCollection;
 class SuperSector extends Base
 {
     use TickerTrait;
-
     use TitleTrait;
 
     /**
+     * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="Sector", mappedBy="superSector")
      */
     private $sectors;
+
+    /**
+     *
+     *
+     * Methods
+     *
+     *
+     */
 
     public function __construct() {
         $this->sectors = new ArrayCollection();
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getSectors()
     {
@@ -42,14 +50,12 @@ class SuperSector extends Base
     }
 
     /**
-     * @param mixed $sectors
+     * @param ArrayCollection $sectors
      * @return SuperSector
      */
-    public function setSectors($sectors)
+    public function setSectors(ArrayCollection $sectors)
     {
         $this->sectors = $sectors;
         return $this;
     }
-
-
 }

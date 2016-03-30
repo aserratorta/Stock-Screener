@@ -5,8 +5,7 @@ namespace AppBundle\Entity;
 use AppBundle\Entity\Traits\TickerTrait;
 use AppBundle\Entity\Traits\TitleTrait;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
-
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Sector Entity Class
@@ -21,17 +20,26 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Sector extends Base
 {
     use TickerTrait;
-
     use TitleTrait;
 
     /**
+     * @var SuperSector
+     *
      * @ORM\ManyToOne(targetEntity="SuperSector", inversedBy="sectors")
      * @ORM\JoinColumn(name="superSector_id", referencedColumnName="id")
      */
     private $superSector;
 
     /**
-     * @return mixed
+     *
+     *
+     * Methods
+     *
+     *
+     */
+
+    /**
+     * @return SuperSector
      */
     public function getSuperSector()
     {
@@ -39,7 +47,7 @@ class Sector extends Base
     }
 
     /**
-     * @param mixed $superSector
+     * @param SuperSector $superSector
      * @return Sector
      */
     public function setSuperSector($superSector)
@@ -47,6 +55,4 @@ class Sector extends Base
         $this->superSector = $superSector;
         return $this;
     }
-
-
 }
