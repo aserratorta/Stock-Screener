@@ -3,7 +3,6 @@
 namespace AppBundle\Entity\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Ticker trait
@@ -17,7 +16,7 @@ Trait TickerTrait
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=10, unique=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $ticker;
 
@@ -38,5 +37,4 @@ Trait TickerTrait
         $this->ticker = $ticker;
         return $this;
     }
-
 }

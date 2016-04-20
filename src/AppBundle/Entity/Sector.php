@@ -26,7 +26,6 @@ class Sector extends Base
      * @var SuperSector
      *
      * @ORM\ManyToOne(targetEntity="SuperSector", inversedBy="sectors")
-     * @ORM\JoinColumn(name="superSector_id", referencedColumnName="id")
      */
     private $superSector;
 

@@ -3,7 +3,6 @@
 namespace AppBundle\Entity\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Title trait
@@ -17,7 +16,7 @@ Trait TitleTrait
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $title;
 
@@ -44,4 +43,5 @@ Trait TitleTrait
     {
         return $this->title;
     }
+
 }
