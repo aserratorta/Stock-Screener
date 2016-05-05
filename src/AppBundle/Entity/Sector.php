@@ -90,5 +90,31 @@ class Sector extends Base
         return $this;
     }
 
+    /* @param Stock $stock
+     *
+     * @return $this
+     */
+    public function addStock(Stock $stock)
+    {
+        $stock->setSector($this);
+        $this->stocks->add($stock);
 
+        return $this;
+    }
+
+    /* @param Stock $stock
+     *
+     * @return $this
+     */
+    public function removeStock(Stock $stock)
+    {
+        $this->stocks->removeElement($stock);
+
+        return $this;
+    }
+
+    public function __toString() {
+
+        return $this->getTitle() ? $this->getTitle() : '---';
+    }
 }

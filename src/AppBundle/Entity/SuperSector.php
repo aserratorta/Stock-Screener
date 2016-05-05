@@ -60,4 +60,32 @@ class SuperSector extends Base
 
         return $this;
     }
+
+    /* @param Sector $sector
+     *
+     * @return $this
+     */
+    public function addSector(Sector $sector)
+    {
+        $sector->setSuperSector($this);
+        $this->sectors->add($sector);
+
+        return $this;
+    }
+
+    /* @param Sector $sector
+     *
+     * @return $this
+     */
+    public function removeSector(Sector $sector)
+    {
+        $this->sectors->removeElement($sector);
+
+        return $this;
+    }
+
+    public function __toString() {
+
+        return $this->getTitle() ? $this->getTitle() : '---';
+    }
 }

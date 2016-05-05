@@ -17,10 +17,10 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             // Sonata
-            new Sonata\AdminBundle\SonataAdminBundle(),
-            new Sonata\BlockBundle\SonataBlockBundle(),
-            new Sonata\CoreBundle\SonataCoreBundle(),
-            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+//            new Sonata\AdminBundle\SonataAdminBundle(),
+//            new Sonata\BlockBundle\SonataBlockBundle(),
+//            new Sonata\CoreBundle\SonataCoreBundle(),
+//            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new AppBundle\AppBundle(),
         );
 
