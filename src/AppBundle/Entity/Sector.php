@@ -46,7 +46,6 @@ class Sector extends Base
 
     /**
      * Sector constructor.
-     * @param ArrayCollection $stocks
      */
     public function __construct()
     {

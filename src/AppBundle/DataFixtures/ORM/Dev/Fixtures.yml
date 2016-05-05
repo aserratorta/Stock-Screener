@@ -12,11 +12,11 @@ AppBundle\Entity\Sector:
     supersector: @supersector<numberBetween(1, 10)>
 
 # Stocks
-AppBundle\Entity\Stocks:
-  stocks{1..40}:
+AppBundle\Entity\Stock:
+  stock{1..40}:
     ticker: <streetSuffix()>
     title: <company()> <companySuffix()>
     exchange: <word()>
-    capamount: <numberBetween(1, 10000)
+    capamount: <numberBetween(1, 10000)>
     capcategory: <word()>
-    sector: @supersector<numberBetween(1, 20)>
+    sector: @sector<numberBetween(1, 20)>
