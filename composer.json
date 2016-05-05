@@ -1,6 +1,5 @@
 {
-    "name": "flux/hidraulica-disseny",
-    "description": "Hidraulica Disseny Symfony 2 Website",
+    "name": "anton/stockscreener",
     "license": "proprietary",
     "type": "project",
     "autoload": {
@@ -35,9 +34,9 @@
         "presta/sitemap-bundle": "^1.3",
         "sensio/distribution-bundle": "~5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
-        "sonata-project/admin-bundle": "2.3.*",
+        "sonata-project/admin-bundle": "dev-master as 2.4.x-dev",
         "sonata-project/datagrid-bundle": "2.2.x-dev",
-        "sonata-project/doctrine-orm-admin-bundle": "2.3.*",
+        "sonata-project/doctrine-orm-admin-bundle": "dev-master as 2.4.x-dev",
         "sonata-project/user-bundle": "2.3.x-dev",
         "stof/doctrine-extensions-bundle": "^1.2",
         "symfony/assetic-bundle": "^2.7",
@@ -46,7 +45,10 @@
         "symfony/swiftmailer-bundle": "~2.3",
         "twbs/bootstrap": "^3.0",
         "twig/extensions": "^1.3",
-        "vich/uploader-bundle": "^0.14.0"
+        "vich/uploader-bundle": "^0.14.0",
+        "friendsofsymfony/rest-bundle": "^1.7",
+        "jms/serializer-bundle": "^1.1",
+        "nelmio/api-doc-bundle": "^2.12"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0"
