@@ -1,12 +1,22 @@
 # SuperSector
 AppBundle\Entity\SuperSector:
-  supersector{1..10}:
+  supersector{1..2}:
     ticker: <cityPrefix()>
     title: <catchPhrase()>
 
 # Sector
 AppBundle\Entity\Sector:
-  sector{1..40}:
+  sector{1..4}:
     ticker: <streetSuffix()>
     title: <company()> <companySuffix()>
-    supersector: @supersector<numberBetween(1, 10)>
+    supersector: @supersector<numberBetween(1, 2)>
+
+# Stocks
+AppBundle\Entity\Stock:
+  stock{1..6}:
+    ticker: <streetSuffix()>
+    title: <company()> <companySuffix()>
+    exchange: <word()>
+    capamount: <numberBetween(1, 10000)>
+    capcategory: <word()>
+    sector: @sector<numberBetween(1, 4)>
