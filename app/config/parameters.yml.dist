@@ -14,4 +14,9 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
 
+    path_java: /usr/bin/java
+    path_node: /usr/local/bin/node
+    path_node_modules: /Users/anton/node_modules
+
+
     project_web_title: "Stock Screener"
