@@ -57,6 +57,7 @@ class SuperSector extends Base
     public function setSectors(ArrayCollection $sectors)
     {
         $this->sectors = $sectors;
+
         return $this;
     }
 }

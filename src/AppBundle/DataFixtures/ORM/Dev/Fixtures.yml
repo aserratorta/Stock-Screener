@@ -6,7 +6,17 @@ AppBundle\Entity\SuperSector:
 
 # Sector
 AppBundle\Entity\Sector:
-  sector{1..40}:
+  sector{1..20}:
     ticker: <streetSuffix()>
     title: <company()> <companySuffix()>
     supersector: @supersector<numberBetween(1, 10)>
+
+# Stocks
+AppBundle\Entity\Stocks:
+  stocks{1..40}:
+    ticker: <streetSuffix()>
+    title: <company()> <companySuffix()>
+    exchange: <word()>
+    capamount: <numberBetween(1, 10000)
+    capcategory: <word()>
+    sector: @supersector<numberBetween(1, 20)>
