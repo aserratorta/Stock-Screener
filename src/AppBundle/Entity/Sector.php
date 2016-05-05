@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use AppBundle\Entity\Traits\TickerTrait;
 use AppBundle\Entity\Traits\TitleTrait;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -30,12 +31,27 @@ class Sector extends Base
     private $superSector;
 
     /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Stock", mappedBy="sector")
+     */
+    private $stocks;
+
+    /**
      *
      *
      * Methods
      *
      *
      */
+
+    /**
+     * Sector constructor.
+     * @param ArrayCollection $stocks
+     */
+    public function __construct()
+    {
+        $this->stocks = new ArrayCollection();
+    }
 
     /**
      * @return SuperSector
@@ -54,4 +70,25 @@ class Sector extends Base
         $this->superSector = $superSector;
         return $this;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getStocks()
+    {
+        return $this->stocks;
+    }
+
+    /**
+     * @param ArrayCollection $stocks
+     * @return Sector
+     */
+    public function setStocks(ArrayCollection $stocks)
+    {
+        $this->stocks = $stocks;
+
+        return $this;
+    }
+
+
 }
