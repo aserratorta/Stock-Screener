@@ -23,7 +23,7 @@ AppBundle\Entity\Stock:
 
 # Screeners
 AppBundle\Entity\Screener:
-  screener{1..2}:
+  screener{1..5}:
     title: <word()>
     value: <randomFloat(2, -200, 200)>
     sector: @sector<numberBetween(1, 20)>
