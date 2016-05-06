@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use AppBundle\Entity\Traits\TickerTrait;
 use AppBundle\Entity\Traits\TitleTrait;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -47,6 +48,12 @@ class Stock extends Base
      * @ORM\ManyToOne(targetEntity="Sector", inversedBy="stocks")
      */
     private $sector;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Screener", mappedBy="stock")
+     */
+    private $screeners;
 
     /**
      *
@@ -130,5 +137,52 @@ class Stock extends Base
         $this->sector = $sector;
 
         return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getScreeners()
+    {
+        return $this->screeners;
+    }
+
+    /**
+     * @param ArrayCollection $screeners
+     * @return Stock
+     */
+    public function setScreeners(ArrayCollection $screeners)
+    {
+        $this->screeners = $screeners;
+
+        return $this;
+    }
+
+    /* @param Screener $screener
+     *
+     * @return $this
+     */
+    public function addScreener(Screener $screener)
+    {
+        $screener->setStock($this);
+        $this->screeners->add($screener);
+
+        return $this;
+    }
+
+    /* @param Screener $screener
+     *
+     * @return $this
+     */
+    public function removeScreener(Screener $screener)
+    {
+        $this->screeners->removeElement($screener);
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getTitle() ? $this->getTitle() : '---';
     }
 }

@@ -20,3 +20,11 @@ AppBundle\Entity\Stock:
     capamount: <numberBetween(1, 10000)>
     capcategory: <numberBetween(0, 2)>
     sector: @sector<numberBetween(1, 20)>
+
+# Screeners
+AppBundle\Entity\Screener:
+  screener{1..2}:
+    title: <word()>
+    value: <randomFloat(2, -200, 200)>
+    sector: @sector<numberBetween(1, 20)>
+    stock: @stock<numberBetween(1, 40)>
