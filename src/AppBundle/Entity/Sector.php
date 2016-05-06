@@ -37,6 +37,12 @@ class Sector extends Base
     private $stocks;
 
     /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Screener", mappedBy="sector")
+     */
+    private $screeners;
+
+    /**
      *
      *
      * Methods
@@ -50,6 +56,7 @@ class Sector extends Base
     public function __construct()
     {
         $this->stocks = new ArrayCollection();
+        $this->screeners = new ArrayCollection();
     }
 
     /**
@@ -89,6 +96,25 @@ class Sector extends Base
         return $this;
     }
 
+    /**
+     * @return ArrayCollection
+     */
+    public function getScreeners()
+    {
+        return $this->screeners;
+    }
+
+    /**
+     * @param ArrayCollection $screeners
+     * @return Sector
+     */
+    public function setScreeners(ArrayCollection $screeners)
+    {
+        $this->screeners = $screeners;
+
+        return $this;
+    }
+
     /* @param Stock $stock
      *
      * @return $this
@@ -112,8 +138,31 @@ class Sector extends Base
         return $this;
     }
 
-    public function __toString() {
+    /* @param Screener $screener
+     *
+     * @return $this
+     */
+    public function addScreener(Screener $screener)
+    {
+        $screener->setSector($this);
+        $this->screeners->add($screener);
 
+        return $this;
+    }
+
+    /* @param Screener $screener
+     *
+     * @return $this
+     */
+    public function removeScreener(Screener $screener)
+    {
+        $this->screeners->removeElement($screener);
+
+        return $this;
+    }
+
+    public function __toString()
+    {
         return $this->getTitle() ? $this->getTitle() : '---';
     }
 }
