@@ -36,8 +36,8 @@ class Stock extends Base
     private $capAmount;
 
     /**
-     * @var string
-     * @ORM\Column(type="string", length=255)
+     * @var integer
+     * @ORM\Column(type="integer")
      */
     private $capCategory;
 
@@ -95,7 +95,7 @@ class Stock extends Base
     }
 
     /**
-     * @return string
+     * @return int
      */
     public function getCapCategory()
     {
@@ -103,7 +103,7 @@ class Stock extends Base
     }
 
     /**
-     * @param string $capCategory
+     * @param int $capCategory
      * @return Stock
      */
     public function setCapCategory($capCategory)

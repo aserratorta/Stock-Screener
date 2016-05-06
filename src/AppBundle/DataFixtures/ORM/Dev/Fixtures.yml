@@ -18,5 +18,5 @@ AppBundle\Entity\Stock:
     title: <company()> <companySuffix()>
     exchange: <word()>
     capamount: <numberBetween(1, 10000)>
-    capcategory: <word()>
+    capcategory: <numberBetween(0, 2)>
     sector: @sector<numberBetween(1, 20)>

@@ -15,12 +15,7 @@ web_profiler:
 doctrine:
     dbal:
         driver: "pdo_sqlite"
-        path:   "%kernel.root_dir%/databases/test.db3"
+        path:   "%kernel.root_dir%/database/test.db3"
 
 swiftmailer:
     disable_delivery: true
-
-doctrine:
-    dbal:
-        driver: pdo_sqlite
-        path:   "%kernel.root_dir%/database/test.db3"
