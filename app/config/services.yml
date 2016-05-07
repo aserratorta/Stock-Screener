@@ -1,7 +1,7 @@
 services:
 # Sonata Admin
-    admin.superSector:
-        class: AppBundle\Admin\SuperSector
-        arguments: [ ~ , AppBundle\Entity\SuperSector, ~ ]
+    admin.supersector:
+        class: AppBundle\Admin\SuperSectorAdmin
+        arguments: [ ~ , AppBundle\Entity\SuperSector , ~ ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Super Sector", group: "Screener" }
