@@ -96,6 +96,24 @@ sonata_admin:
     templates:
         layout: "::Admin/layout.html.twig"
 #        show:   "::Admin/show.html.twig"
+    dashboard:
+        groups:
+            Screener:
+                icon: "<i class='fa fa-microphone' aria-hidden='true'></i>"
+        blocks:
+            -
+                position: top
+                type: sonata.block.service.text
+                class: col-md-12
+                settings:
+                    content: >
+                        <h1 style="margin-top:0">Content Management System</h1>
+            -
+                position: top
+                type: sonata.admin.block.admin_list
+                class: col-md-6
+                settings:
+                    groups: [ Screener ]
 
 # Stof Doctrine Extensions
 stof_doctrine_extensions:
