@@ -4,4 +4,9 @@ services:
         class: AppBundle\Admin\SuperSectorAdmin
         arguments: [ ~ , AppBundle\Entity\SuperSector , ~ ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Super Sector", group: "Screener" }
+            - { name: sonata.admin, manager_type: orm, label: "Super Sector", group: "Super Sector" }
+    admin.sector:
+        class: AppBundle\Admin\SectorAdmin
+        arguments: [ ~ , AppBundle\Entity\Sector , ~ ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Sector", group: "Sector" }
