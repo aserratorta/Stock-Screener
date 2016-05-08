@@ -10,3 +10,8 @@ services:
         arguments: [ ~ , AppBundle\Entity\Sector , ~ ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Sector", group: "Sector" }
+    admin.stock:
+        class: AppBundle\Admin\StockAdmin
+        arguments: [ ~ , AppBundle\Entity\Stock , ~ ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Stock", group: "Stock" }

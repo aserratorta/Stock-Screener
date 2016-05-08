@@ -57,11 +57,12 @@ class StockAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'Sector',
+                'sector',
                 null,
                 array(
                     'label' => 'Sector',
                     'editable' => true,
+                    'required' => true,
                 )
             )
             ->add(
@@ -145,7 +146,7 @@ class StockAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'Sector',
+                'sector',
                 null,
                 array(
                     'label' => 'Sector',
@@ -209,7 +210,7 @@ class StockAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'Sector',
+                'sector',
                 null,
                 array(
                     'label' => 'Sector',

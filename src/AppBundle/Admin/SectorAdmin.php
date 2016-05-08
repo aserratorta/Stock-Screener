@@ -62,7 +62,7 @@ class SectorAdmin extends AbstractBaseAdmin
                 array(
                     'label' => 'Super Sector',
                     'editable' => true,
-                    'required' => false,
+                    'required' => true,
                 )
             )
             ->end()

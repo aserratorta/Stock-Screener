@@ -102,6 +102,8 @@ sonata_admin:
                 icon: "<i class='fa fa-microphone' aria-hidden='true'></i>"
             Sector:
                 icon: "<i class='fa fa-microphone' aria-hidden='true'></i>"
+            Stock:
+                icon: "<i class='fa fa-microphone' aria-hidden='true'></i>"
         blocks:
             -
                 position: top
@@ -122,6 +124,12 @@ sonata_admin:
                 class: col-md-6
                 settings:
                     groups: [ Sector ]
+            -
+                position: top
+                type: sonata.admin.block.admin_list
+                class: col-md-6
+                settings:
+                    groups: [ Stock ]
 
 # Stof Doctrine Extensions
 stof_doctrine_extensions:
