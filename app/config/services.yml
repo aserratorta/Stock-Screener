@@ -15,3 +15,14 @@ services:
         arguments: [ ~ , AppBundle\Entity\Stock , ~ ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Stock", group: "Stock" }
+    admin.screener:
+        class: AppBundle\Admin\ScreenerAdmin
+        arguments: [ ~ , AppBundle\Entity\Screener, AppBundle:Admin\ScreenerAdmin ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Screener", group: "Screener" }
+# Sonata Blocks
+    admin.block.screener:
+        class: AppBundle\Admin\Block\MyBlock
+        tags:
+            - { name: sonata.block }
+        arguments: [ "sonata.admin.block.messages", "@templating" ]

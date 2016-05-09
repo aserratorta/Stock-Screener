@@ -79,6 +79,7 @@ sonata_block:
     blocks:
         sonata.admin.block.admin_list:  ~
         sonata.block.service.text:      ~
+        admin.block.screener:
 
 # Admin
 sonata_admin:
@@ -110,23 +111,15 @@ sonata_admin:
                     content: >
                         <h1 style="margin-top:0">Stock Screener</h1>
             -
-                position: top
+                position: left
                 type: sonata.admin.block.admin_list
                 class: col-md-6
                 settings:
-                    groups: [ SuperSector ]
+                    groups: [ SuperSector, Sector, Stock ]
             -
-                position: top
-                type: sonata.admin.block.admin_list
+                position: right
+                type: admin.block.screener
                 class: col-md-6
-                settings:
-                    groups: [ Sector ]
-            -
-                position: top
-                type: sonata.admin.block.admin_list
-                class: col-md-6
-                settings:
-                    groups: [ Stock ]
 
 # Stof Doctrine Extensions
 stof_doctrine_extensions:
