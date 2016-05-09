@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller\Admin;
 
+use AppBundle\Form\Type\FilterType;
 use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,10 +33,10 @@ class ScreenerAdminController extends BaseAdminController
 
         //TODO
 
-//        $form = $this->createForm(ContactMessageAnswerType::class, $object);
+//        $form = $this->createForm(FilterType::class);
 //        $form->handleRequest($request);
 //        if ($form->isSubmitted() && $form->isValid()) {
-            // persist new contact message form record
+//             persist new contact message form record
 //            $object->setAnswered(true);
 //            $em = $this->getDoctrine()->getManager();
 //            $em->persist($object);
