@@ -39,44 +39,37 @@ class ScreenerAdmin extends AbstractBaseAdmin
     /**
      * @param FormMapper $formMapper
      */
-    protected function configureFormFields(FormMapper $formMapper)
-    {
-        $formMapper
-            ->with('General', $this->getFormMdSuccessBoxArray(7))
-            ->add(
-                'ticker',
-                null,
-                array(
-                    'label' => 'Ticker',
-                )
-            )
-            ->add(
-                'title',
-                null,
-                array(
-                    'label' => 'Títol',
-                )
-            )
-            ->add(
-                'superSector',
-                null,
-                array(
-                    'label' => 'Super Sector',
-                    'required' => true,
-                )
-            )
-            ->end()
-            ->with('Controls', $this->getFormMdSuccessBoxArray(5))
-            ->add(
-                'enabled',
-                'checkbox',
-                array(
-                    'label'    => 'Actiu',
-                    'required' => false,
-                )
-            )
-            ->end();
-    }
+//    protected function configureFormFields(FormMapper $formMapper)
+//    {
+//        $formMapper
+//            ->with('General', $this->getFormMdSuccessBoxArray(7))
+//            ->add(
+//                'title',
+//                null,
+//                array(
+//                    'label' => 'Títol',
+//                )
+//            )
+//            ->add(
+//                'value',
+//                null,
+//                array(
+//                    'label' => 'Valor',
+//                    'required' => true,
+//                )
+//            )
+//            ->end()
+//            ->with('Controls', $this->getFormMdSuccessBoxArray(5))
+//            ->add(
+//                'enabled',
+//                'checkbox',
+//                array(
+//                    'label'    => 'Actiu',
+//                    'required' => false,
+//                )
+//            )
+//            ->end();
+//    }
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -84,27 +77,20 @@ class ScreenerAdmin extends AbstractBaseAdmin
     {
         $datagridMapper
             ->add(
-                'ticker',
-                null,
-                array(
-                    'label' => 'Ticker',
-                )
-            )
-            ->add(
                 'title',
                 null,
                 array(
                     'label' => 'Títol',
                 )
             )
-            ->add(
-                'superSector',
-                null,
-                array(
-                    'label' => 'Super Sector',
-                    'editable' => true,
-                )
-            )
+//            ->add(
+//                'sector',
+//                null,
+//                array(
+//                    'label' => 'Sector',
+//                    'editable' => true,
+//                )
+//            )
             ->add(
                 'enabled',
                 null,
@@ -123,13 +109,6 @@ class ScreenerAdmin extends AbstractBaseAdmin
         unset($this->listModes['mosaic']);
         $listMapper
             ->add(
-                'ticker',
-                null,
-                array(
-                    'label' => 'Ticker',
-                )
-            )
-            ->add(
                 'title',
                 null,
                 array(
@@ -137,14 +116,44 @@ class ScreenerAdmin extends AbstractBaseAdmin
                     'editable' => true,
                 )
             )
-            ->add(
-                'superSector',
-                null,
-                array(
-                    'label' => 'Super Sector',
-                    'editable' => true,
-                )
-            )
+//            ->add(
+//                'sector.ticker',
+//                null,
+//                array(
+//                    'label' => 'Ticker',
+//                )
+//            )
+//            ->add(
+//                'sector',
+//                null,
+//                array(
+//                    'label' => 'Super Sector',
+//                    'editable' => true,
+//                )
+//            )
+//            ->add(
+//                'stock.ticker',
+//                null,
+//                array(
+//                    'label' => 'Ticker',
+//                )
+//            )
+//            ->add(
+//                'stock',
+//                null,
+//                array(
+//                    'label' => 'Stock',
+//                    'editable' => true,
+//                )
+//            )
+//            ->add(
+//                'value',
+//                null,
+//                array(
+//                    'label' => 'Valor',
+//                    'required' => true,
+//                )
+//            )
             ->add(
                 'enabled',
                 null,
@@ -159,7 +168,7 @@ class ScreenerAdmin extends AbstractBaseAdmin
                 array(
                     'label'   => 'Accions',
                     'actions' => array(
-                        'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
+//                        'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
                         'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     )
                 )
