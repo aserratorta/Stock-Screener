@@ -61,7 +61,6 @@ class StockAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'Sector',
-                    'editable' => true,
                     'required' => true,
                 )
             )
@@ -70,7 +69,6 @@ class StockAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'Exchange',
-                    'editable' => true,
                 )
             )
             ->end()
@@ -80,7 +78,6 @@ class StockAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'capAmount',
-                    'editable' => true,
                 )
             )
             ->add(
@@ -88,7 +85,6 @@ class StockAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'capCategory',
-                    'editable' => true,
                 )
             )
             ->add(
@@ -126,7 +122,6 @@ class StockAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'Exchange',
-                    'editable' => true,
                 )
             )
             ->add(
@@ -134,7 +129,6 @@ class StockAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'capAmount',
-                    'editable' => true,
                 )
             )
             ->add(
@@ -142,7 +136,6 @@ class StockAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'capCategory',
-                    'editable' => true,
                 )
             )
             ->add(
@@ -150,7 +143,6 @@ class StockAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'Sector',
-                    'editable' => true,
                 )
             )
             ->add(
