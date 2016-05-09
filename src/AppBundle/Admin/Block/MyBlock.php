@@ -32,7 +32,7 @@ class MyBlock extends BaseBlockService
             array(
                 'block'           => $blockContext->getBlock(),
                 'settings'        => $blockContext->getSettings(),
-                'title'           => 'myblock',
+                'title'           => 'Screeners',
             ),
             $response
         );

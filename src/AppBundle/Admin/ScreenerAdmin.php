@@ -32,6 +32,7 @@ class ScreenerAdmin extends AbstractBaseAdmin
     {
         $collection
             ->remove('show')
+            ->remove('edit')
             ->remove('batch')
             ->add('filter', 'filter');
     }
