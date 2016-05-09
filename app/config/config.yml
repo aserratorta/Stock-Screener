@@ -95,7 +95,7 @@ sonata_admin:
 #        show:   "::Admin/show.html.twig"
     dashboard:
         groups:
-            Super Sector:
+            SuperSector:
                 icon: "<i class='fa fa-microphone' aria-hidden='true'></i>"
             Sector:
                 icon: "<i class='fa fa-microphone' aria-hidden='true'></i>"
@@ -114,7 +114,7 @@ sonata_admin:
                 type: sonata.admin.block.admin_list
                 class: col-md-6
                 settings:
-                    groups: [ Super Sector ]
+                    groups: [ SuperSector ]
             -
                 position: top
                 type: sonata.admin.block.admin_list

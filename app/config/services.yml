@@ -4,7 +4,7 @@ services:
         class: AppBundle\Admin\SuperSectorAdmin
         arguments: [ ~ , AppBundle\Entity\SuperSector , ~ ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Super Sector", group: "Super Sector" }
+            - { name: sonata.admin, manager_type: orm, label: "Super Sector", group: "SuperSector" }
     admin.sector:
         class: AppBundle\Admin\SectorAdmin
         arguments: [ ~ , AppBundle\Entity\Sector , ~ ]

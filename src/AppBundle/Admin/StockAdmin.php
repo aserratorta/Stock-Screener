@@ -146,6 +146,13 @@ class StockAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'sector.superSector',
+                null,
+                array(
+                    'label' => 'Super Sector',
+                )
+            )
+            ->add(
                 'enabled',
                 null,
                 array(
