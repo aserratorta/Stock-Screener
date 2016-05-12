@@ -40,37 +40,38 @@ class ScreenerAdmin extends AbstractBaseAdmin
     /**
      * @param FormMapper $formMapper
      */
-//    protected function configureFormFields(FormMapper $formMapper)
-//    {
-//        $formMapper
-//            ->with('General', $this->getFormMdSuccessBoxArray(7))
-//            ->add(
-//                'title',
-//                null,
-//                array(
-//                    'label' => 'Títol',
-//                )
-//            )
-//            ->add(
-//                'value',
-//                null,
-//                array(
-//                    'label' => 'Valor',
-//                    'required' => true,
-//                )
-//            )
-//            ->end()
-//            ->with('Controls', $this->getFormMdSuccessBoxArray(5))
-//            ->add(
-//                'enabled',
-//                'checkbox',
-//                array(
-//                    'label'    => 'Actiu',
-//                    'required' => false,
-//                )
-//            )
-//            ->end();
-//    }
+    protected function configureFormFields(FormMapper $formMapper)
+    {
+        $formMapper
+            ->with('General', $this->getFormMdSuccessBoxArray(7))
+            ->add(
+                'title',
+                null,
+                array(
+                    'label' => 'Títol',
+                )
+            )
+            ->add(
+                'value',
+                null,
+                array(
+                    'label' => 'Valor',
+                    'required' => true,
+                )
+            )
+            ->end()
+            ->with('Controls', $this->getFormMdSuccessBoxArray(5))
+            ->add(
+                'enabled',
+                'checkbox',
+                array(
+                    'label'    => 'Actiu',
+                    'required' => false,
+                )
+            )
+            ->end();
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */
