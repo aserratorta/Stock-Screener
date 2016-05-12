@@ -105,4 +105,11 @@ class Screener extends Base
 
         return $this;
     }
+
+    function __toString()
+    {
+        return $this->getTitle();
+    }
+
+
 }

@@ -33,8 +33,8 @@ class ScreenerAdminController extends BaseAdminController
 
         //TODO
 
-//        $form = $this->createForm(FilterType::class);
-//        $form->handleRequest($request);
+        $form = $this->createForm(FilterType::class);
+        $form->handleRequest($request);
 //        if ($form->isSubmitted() && $form->isValid()) {
 //             persist new contact message form record
 //            $object->setAnswered(true);
@@ -48,6 +48,7 @@ class ScreenerAdminController extends BaseAdminController
             array(
                 'action'   => 'show',
                 'object'   => array(),
+                'form'     => $form->createView(),
                 'elements' => $this->admin->getShow(),
             ),
             null,
