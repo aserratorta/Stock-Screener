@@ -34,3 +34,5 @@ monolog:
 #swiftmailer:
 #    delivery_address: me@example.com
 
+hautelook_alice:
+    seed: 4

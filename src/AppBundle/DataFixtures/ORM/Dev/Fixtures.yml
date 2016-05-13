@@ -24,7 +24,10 @@ AppBundle\Entity\Stock:
 # Screeners
 AppBundle\Entity\Screener:
   screener{1..5}:
-    title: <word()>
+    title(unique): <word()>
     value: <randomFloat(2, -200, 200)>
     sector: @sector<numberBetween(1, 20)>
+  screener{6..10}:
+    title(unique): <word()>
+    value: <randomFloat(2, -200, 200)>
     stock: @stock<numberBetween(1, 40)>

@@ -52,6 +52,7 @@ class Stock extends Base
     /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="Screener", mappedBy="stock")
+     * @ORM\OrderBy({"value" = "DESC"})
      */
     private $screeners;
 

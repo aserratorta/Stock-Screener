@@ -52,6 +52,20 @@ class ScreenerAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'sector',
+                null,
+                array(
+                    'label' => 'Sector',
+                )
+            )
+            ->add(
+                'stock',
+                null,
+                array(
+                    'label' => 'Stock',
+                )
+            )
+            ->add(
                 'value',
                 null,
                 array(
@@ -85,14 +99,14 @@ class ScreenerAdmin extends AbstractBaseAdmin
                     'label' => 'Títol',
                 )
             )
-//            ->add(
-//                'sector',
-//                null,
-//                array(
-//                    'label' => 'Sector',
-//                    'editable' => true,
-//                )
-//            )
+            ->add(
+                'sector',
+                null,
+                array(
+                    'label' => 'Sector',
+                    'editable' => true,
+                )
+            )
             ->add(
                 'enabled',
                 null,
@@ -118,44 +132,44 @@ class ScreenerAdmin extends AbstractBaseAdmin
                     'editable' => true,
                 )
             )
-//            ->add(
-//                'sector.ticker',
-//                null,
-//                array(
-//                    'label' => 'Ticker',
-//                )
-//            )
-//            ->add(
-//                'sector',
-//                null,
-//                array(
-//                    'label' => 'Super Sector',
-//                    'editable' => true,
-//                )
-//            )
-//            ->add(
-//                'stock.ticker',
-//                null,
-//                array(
-//                    'label' => 'Ticker',
-//                )
-//            )
-//            ->add(
-//                'stock',
-//                null,
-//                array(
-//                    'label' => 'Stock',
-//                    'editable' => true,
-//                )
-//            )
-//            ->add(
-//                'value',
-//                null,
-//                array(
-//                    'label' => 'Valor',
-//                    'required' => true,
-//                )
-//            )
+            ->add(
+                'sector.ticker',
+                null,
+                array(
+                    'label' => 'Ticker',
+                )
+            )
+            ->add(
+                'sector',
+                null,
+                array(
+                    'label' => 'Super Sector',
+                    'editable' => true,
+                )
+            )
+            ->add(
+                'stock.ticker',
+                null,
+                array(
+                    'label' => 'Ticker',
+                )
+            )
+            ->add(
+                'stock',
+                null,
+                array(
+                    'label' => 'Stock',
+                    'editable' => true,
+                )
+            )
+            ->add(
+                'value',
+                null,
+                array(
+                    'label' => 'Valor',
+                    'required' => true,
+                )
+            )
             ->add(
                 'enabled',
                 null,
