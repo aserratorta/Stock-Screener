@@ -13,4 +13,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class ScreenerRepository extends EntityRepository
 {
+    public function filterScreenersSortedByValue()
+    {
+        $query = $this->createQueryBuilder('sc');
+
+        return $query->getQuery()->getResult();
+    }
 }

@@ -30,18 +30,16 @@ class ScreenerAdminController extends BaseAdminController
     public function filterAction(Request $request = null)
     {
         $request = $this->resolveRequest($request);
-
-        //TODO
+//        $object = $request->get($this->admin->g);
 
         $form = $this->createForm(FilterType::class);
         $form->handleRequest($request);
 //        if ($form->isSubmitted() && $form->isValid()) {
-//             persist new contact message form record
-//            $object->setAnswered(true);
-//            $em = $this->getDoctrine()->getManager();
-//            $em->persist($object);
-//            $em->flush();
+//            $screener = $form->getData();
+
 //        }
+
+        $screenersList = $this->getDoctrine()->getRepository('AppBundle:Screener')->filterScreenersSortedByValue();
 
         return $this->render(
             '::Admin/Filters/filters_form.html.twig',
@@ -50,6 +48,7 @@ class ScreenerAdminController extends BaseAdminController
                 'object'   => array(),
                 'form'     => $form->createView(),
                 'elements' => $this->admin->getShow(),
+                'screenersList' => $screenersList,
             ),
             null,
             $request

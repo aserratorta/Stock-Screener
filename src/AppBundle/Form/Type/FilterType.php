@@ -74,12 +74,9 @@ class FilterType extends AbstractType
                 'screener',
                 EntityType::class,
                 array(
-                    'label'    => false,
+                    'label'    => 'Screener',
                     'class' => 'AppBundle\Entity\Screener',
                     'required' => true,
-                    'attr'     => array(
-//                        'placeholder' => 'Screener',
-                    ),
                 )
             )
 //            ->add(
@@ -97,9 +94,9 @@ class FilterType extends AbstractType
                 'send',
                 SubmitType::class,
                 array(
-                    'label' => 'front.contact.form.ok',
+                    'label' => 'filtrar',
                     'attr'  => array(
-                        'class' => 'btn-default',
+                        'class' => 'btn btn-primary',
                     ),
                 )
             );

@@ -21,17 +21,25 @@
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
-                                <th>{{ 'ticker' }}</th>
-                                <th>{{ 'sector' }}</th>
-                                <th>{{ 'ticker' }}</th>
-                                <th>{{ 'stock' }}</th>
-                                <th>{{ 'value' }}</th>
+                                <tr>
+                                    <th>{{ 'ticker' }}</th>
+                                    <th>{{ 'sector' }}</th>
+                                    <th>{{ 'ticker' }}</th>
+                                    <th>{{ 'stock' }}</th>
+                                    <th>{{ 'value' }}</th>
+                                </tr>
                             </thead>
-                            {#<body>#}
-                                {#{% for object in screener %}#}
-                                    {#<li>{{ object }}</li>#}
-                                {#{% endfor %}#}
-                            {#</body>#}
+                            <tbody>
+                                {% for screener in screenersList %}
+                                    <tr>
+                                        <td>{{ screener.sector.ticker }}</td>
+                                        <td>{{ screener.sector.title }}</td>
+                                        <td>{{ screener.stock.ticker }}</td>
+                                        <td>{{ screener.stock.title }}</td>
+                                        <td>{{ screener.value }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
                         </table>
                     </div>
                 </div>
