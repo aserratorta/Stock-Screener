@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller\Admin;
 
-use AppBundle\Form\Type\FilterType;
 use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,16 +28,6 @@ class ScreenerAdminController extends BaseAdminController
      */
     public function filterAction(Request $request = null)
     {
-        $request = $this->resolveRequest($request);
-//        $object = $request->get($this->admin->g);
-
-        $form = $this->createForm(FilterType::class);
-        $form->handleRequest($request);
-//        if ($form->isSubmitted() && $form->isValid()) {
-//            $screener = $form->getData();
-
-//        }
-
         $screenersList = $this->getDoctrine()->getRepository('AppBundle:Screener')->filterScreenersSortedByValue();
 
         return $this->render(
@@ -46,7 +35,6 @@ class ScreenerAdminController extends BaseAdminController
             array(
                 'action'   => 'show',
                 'object'   => array(),
-                'form'     => $form->createView(),
                 'elements' => $this->admin->getShow(),
                 'screenersList' => $screenersList,
             ),
