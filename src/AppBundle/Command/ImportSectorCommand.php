@@ -70,33 +70,32 @@ class ImportSectorCommand extends AbstractBaseCommand
                 continue;
             }
 
-            // C -Codi SAP del neumàtic
             $supers_ticker = (string)$this->loadColumnData(0, $data);
             $sector_ticker = (string)$this->loadColumnData(2, $data);
-            $sector_title =  (string)$this->loadColumnData(3, $data);
+            $sector_title  = (string)$this->loadColumnData(3, $data);
 
             $supersector = $this->em->getRepository('AppBundle:SuperSector')->findOneBy(array('ticker'=> $supers_ticker ));
 
             if ($supersector) {
 
-                //TODO repositroi de sectors i buscar un tiker = sector_ticker
+                //TODO repositori de sectors i buscar un ticker = sector_ticker
+                $sector_ticker_exist = $this->em->getRepository('AppBundle:Sector')->findOneBy(array('ticker'=> $sector_ticker));
+
                 //TODO si no existeix -> sector nou
+                if (!$sector_ticker_exist) {
 
-                $sector = new Sector();
-                $sector
-                    ->setSuperSector($supersector)
-                    ->setTicker($sector_ticker)
-                    ->setTitle($sector_title);
+                    $sector = new Sector();
+                    $sector
+                        ->setSuperSector($supersector)
+                        ->setTicker($sector_ticker)
+                        ->setTitle($sector_title);
 
-                $this->persistObject($sector);
-
-                $itemsFound = $itemsFound + 1;
+                    $this->persistObject($sector);
+                    $itemsFound = $itemsFound + 1;
+                }
             }
-
-            $output->writeln($supers_ticker);
+            $output->writeln($sector_ticker);
         }
-
         $output->writeln($itemsFound);
-
     }
 }
