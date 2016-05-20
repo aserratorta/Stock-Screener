@@ -3,18 +3,19 @@
 namespace AppBundle\Command;
 
 use AppBundle\Entity\Sector;
+use AppBundle\Entity\Stock;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class ImportSectorCommand extends AbstractBaseCommand
+class ImportStockCommand extends AbstractBaseCommand
 {
     protected function configure()
     {
         $this
-            ->setName('app:import:sector')
-            ->setDescription('Import sector from csv file')
+            ->setName('app:import:stock')
+            ->setDescription('Import stocks from csv file')
             ->addArgument(
                 'filename',
                 InputArgument::REQUIRED,
@@ -30,7 +31,7 @@ class ImportSectorCommand extends AbstractBaseCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('<info>Welcome to import sector command</info>');
+        $output->writeln('<info>Welcome to import stock command</info>');
 
         if ($input->getOption('force')) {
             $output->writeln(
@@ -69,31 +70,31 @@ class ImportSectorCommand extends AbstractBaseCommand
                 continue;
             }
 
-            $supers_ticker = (string)$this->loadColumnData(0, $data);
+            $stock_ticker = (string)$this->loadColumnData(0, $data);
+            $stock_title  = (string)$this->loadColumnData(1, $data);
             $sector_ticker = (string)$this->loadColumnData(2, $data);
-            $sector_title  = (string)$this->loadColumnData(3, $data);
 
-            $supersector = $this->em->getRepository('AppBundle:SuperSector')->findOneBy(array('ticker'=> $supers_ticker ));
+            $sector = $this->em->getRepository('AppBundle:Sector')->findOneBy(array('ticker'=> $sector_ticker ));
 
-            if ($supersector) {
+            if ($sector) {
 
                 //TODO repositori de sectors i buscar un ticker = sector_ticker
-                $sector_ticker_exist = $this->em->getRepository('AppBundle:Sector')->findOneBy(array('ticker'=> $sector_ticker));
+                $stock_ticker_exist = $this->em->getRepository('AppBundle:Stock')->findOneBy(array('ticker'=> $stock_ticker));
 
                 //TODO si no existeix -> sector nou
-                if (!$sector_ticker_exist) {
+                if (!$stock_ticker_exist) {
 
-                    $sector = new Sector();
-                    $sector
-                        ->setSuperSector($supersector)
-                        ->setTicker($sector_ticker)
-                        ->setTitle($sector_title);
+                    $stock = new Stock();
+                    $stock
+                        ->setSector($sector)
+                        ->setTicker($stock_ticker)
+                        ->setTitle($stock_title);
 
-                    $this->persistObject($sector);
+                    $this->persistObject($stock);
                     $itemsFound = $itemsFound + 1;
                 }
             }
-            $output->writeln($sector_title);
+            $output->writeln($stock_ticker.' '.$stock_title);
         }
         $output->writeln($itemsFound);
     }
