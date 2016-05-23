@@ -32,7 +32,7 @@ class ImportSectorCommand extends AbstractBaseCommand
     {
         $output->writeln('<info>Welcome to import sector command</info>');
 
-        if ($input->getOption('force')) {
+        if ($input->getOption('force') == true) {
             $output->writeln(
                 '<comment>--force option enabled (this option persists changes in database)</comment>'
             );
@@ -63,6 +63,8 @@ class ImportSectorCommand extends AbstractBaseCommand
 
         ini_set('auto_detect_line_endings', true);
 
+        $this->forceOptionIsEnabled = $input->getOption('force');
+
         while (($data = $this->readCSVLine($fr)) !== false) {
             if ($indexStart > ++$index) {
                 // Is not valid indexStart?
@@ -83,17 +85,18 @@ class ImportSectorCommand extends AbstractBaseCommand
                 //TODO si no existeix -> sector nou
                 if (!$sector_ticker_exist) {
 
-                    $sector = new Sector();
-                    $sector
-                        ->setSuperSector($supersector)
-                        ->setTicker($sector_ticker)
-                        ->setTitle($sector_title);
-
-                    $this->persistObject($sector);
-                    $itemsFound = $itemsFound + 1;
+                    $sector_ticker_exist = new Sector();
                 }
+
+                $sector_ticker_exist
+                    ->setSuperSector($supersector)
+                    ->setTicker($sector_ticker)
+                    ->setTitle($sector_title);
+
+                $this->persistObject($sector_ticker_exist);
+                $itemsFound = $itemsFound + 1;
             }
-            $output->writeln($sector_title);
+//            $output->writeln($sector_title);
         }
         $output->writeln($itemsFound);
     }

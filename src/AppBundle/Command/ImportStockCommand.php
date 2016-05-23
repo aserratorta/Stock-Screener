@@ -40,7 +40,6 @@ class ImportStockCommand extends AbstractBaseCommand
         }
 
         // Validate arguments
-        $importSectionOnly = false;
         $filesystem        = $this->getContainer()->get('filesystem');
         $filename          = $input->getArgument('filename');
         $fr                = fopen($filename, 'r');
@@ -56,13 +55,14 @@ class ImportStockCommand extends AbstractBaseCommand
         $output->writeln('loading data, please wait...');
 
         // Command Vars
-        $dtStart         = new \DateTime();
         $index           = 0;
-        $indexStart      = 0;
+        $indexStart      = 1;
         $this->em        = $this->getContainer()->get('doctrine.orm.default_entity_manager');
         $itemsFound      = 0;
 
         ini_set('auto_detect_line_endings', true);
+
+        $this->forceOptionIsEnabled = $input->getOption('force');
 
         while (($data = $this->readCSVLine($fr)) !== false) {
             if ($indexStart > ++$index) {
@@ -76,25 +76,29 @@ class ImportStockCommand extends AbstractBaseCommand
 
             $sector = $this->em->getRepository('AppBundle:Sector')->findOneBy(array('ticker'=> $sector_ticker ));
 
+//            $output->writeln($sector);
+
             if ($sector) {
 
                 //TODO repositori de sectors i buscar un ticker = sector_ticker
                 $stock_ticker_exist = $this->em->getRepository('AppBundle:Stock')->findOneBy(array('ticker'=> $stock_ticker));
 
+//                $output->writeln($stock_ticker_exist);
+
                 //TODO si no existeix -> sector nou
                 if (!$stock_ticker_exist) {
 
-                    $stock = new Stock();
-                    $stock
-                        ->setSector($sector)
-                        ->setTicker($stock_ticker)
-                        ->setTitle($stock_title);
-
-                    $this->persistObject($stock);
-                    $itemsFound = $itemsFound + 1;
+                    $stock_ticker_exist = new Stock();
                 }
+                $stock_ticker_exist
+                    ->setSector($sector)
+                    ->setTicker($stock_ticker)
+                    ->setTitle($stock_title);
+
+                $this->persistObject($stock_ticker_exist);
+                $itemsFound = $itemsFound + 1;
+//                $output->writeln($stock_ticker.' '.$stock_title);
             }
-            $output->writeln($stock_ticker.' '.$stock_title);
         }
         $output->writeln($itemsFound);
     }

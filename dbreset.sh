@@ -8,6 +8,8 @@ if [ -z "$1" ]
     # php app/console doctrine:migrations:diff
     # php app/console doctrine:migrations:mig
     php app/console hautelook_alice:doctrine:fixtures:load -n
+    php app/console app:import:sector app/csv/DJ_SbSect.csv --force
+    php app/console app:import:stock app/csv/DJ_Stocks.csv --force
   else
     if [ "$1" = "dev" -o "$1" = "test" -o "$1" = "prod" -o "$1" = "remote" ]
       then

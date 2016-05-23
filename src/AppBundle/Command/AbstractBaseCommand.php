@@ -78,12 +78,12 @@ abstract class AbstractBaseCommand extends ContainerAwareCommand
     protected function persistObject($object)
     {
         if ($this->forceOptionIsEnabled) {
-            try {
+//            try {
                 $this->em->persist($object);
                 $this->em->flush();
-            } catch (\Exception $e) {
+//            } catch (\Exception $e) {
 //                $this->exceptionsCatchedAmount++;
-            }
+//            }
         }
     }
 }
