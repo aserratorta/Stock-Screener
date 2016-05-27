@@ -74,24 +74,24 @@ class ImportScreenerCommand extends AbstractBaseCommand
             }
 
             $ticker = (string)$this->loadColumnData(0, $data);
+//            $stock_ticker = (string)$this->loadColumnData(0, $data);
             $value  = (string)$this->loadColumnData(1, $data);
             $title = (string)$this->loadColumnData(2, $data);
 
-            $sector = $this->em->getRepository('AppBundle:Sector')->findOneBy(array('ticker'=> $ticker ));
-            $stock = $this->em->getRepository('AppBundle:Stock')->findOneBy(array('ticker'=> $ticker ));
+            $sector_ticker = $this->em->getRepository('AppBundle:Sector')->findOneBy(array('ticker'=> $ticker ));
+            $stock_ticker = $this->em->getRepository('AppBundle:Stock')->findOneBy(array('ticker'=> $ticker ));
 
+            if (!$sector_ticker and !$stock_ticker) {
 
-            if ($sector and $stock) {
+                $sector_ticker = new Screener();
 
-                $screener = new Screener();
-
-                $screener
-                    ->setSector($ticker)
-                    ->setStock($ticker)
+                $sector_ticker
+                    ->setSector($sector_ticker)
+                    ->setStock($stock_ticker)
                     ->setValue($value)
                     ->setTitle($title);
                 }
-                $this->persistObject($screener);
+                $this->persistObject($sector_ticker);
                 $itemsFound = $itemsFound + 1;
 //                $output->writeln($stock_ticker.' '.$stock_title);
         }
