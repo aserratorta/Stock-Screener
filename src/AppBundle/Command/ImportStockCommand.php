@@ -70,34 +70,34 @@ class ImportStockCommand extends AbstractBaseCommand
                 continue;
             }
 
-            $stock_ticker = (string)$this->loadColumnData(0, $data);
-            $stock_title  = (string)$this->loadColumnData(1, $data);
-            $sector_ticker = (string)$this->loadColumnData(2, $data);
+            $stock_ticker = (string)$this->loadColumnData(1, $data);
+            $stock_title  = (string)$this->loadColumnData(2, $data);
+            $sector_ticker = (string)$this->loadColumnData(3, $data);
+            $market_cap = (float)$this->loadColumnData(5, $data);
+            $exchange = (string)$this->loadColumnData(6, $data);
 
             $sector = $this->em->getRepository('AppBundle:Sector')->findOneBy(array('ticker'=> $sector_ticker ));
 
-//            $output->writeln($sector);
-
             if ($sector) {
 
-                //TODO repositori de sectors i buscar un ticker = sector_ticker
+                //repositori de stocks i buscar un ticker = stock_ticker
                 $stock_ticker_exist = $this->em->getRepository('AppBundle:Stock')->findOneBy(array('ticker'=> $stock_ticker));
 
-//                $output->writeln($stock_ticker_exist);
-
-                //TODO si no existeix -> sector nou
+                //si no existeix -> stock nou
                 if (!$stock_ticker_exist) {
 
                     $stock_ticker_exist = new Stock();
                 }
-                $stock_ticker_exist
-                    ->setSector($sector)
-                    ->setTicker($stock_ticker)
-                    ->setTitle($stock_title);
+
+                $stock_ticker_exist->setSector($sector);
+                $stock_ticker_exist->setTicker($stock_ticker);
+                $stock_ticker_exist->setTitle($stock_title);
+                $stock_ticker_exist->setCapAmount($market_cap);
+                $stock_ticker_exist->setExchange($exchange);
 
                 $this->persistObject($stock_ticker_exist);
                 $itemsFound = $itemsFound + 1;
-//                $output->writeln($stock_ticker.' '.$stock_title);
+                $output->writeln($stock_ticker.' '.$stock_title.' '.$sector_ticker.' '.$market_cap.' '.$exchange );
             }
         }
         $output->writeln($itemsFound);
