@@ -1,0 +1,37 @@
+security:
+#    access_decision_manager:
+#        strategy: unanimous
+    providers:
+        in_memory:
+            memory: ~
+#    encoders:
+#        FOS\UserBundle\Model\UserInterface: bcrypt
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+#        admin:
+#            pattern: /admin(.*)
+#            context: user
+#            form_login:
+#                provider:                       fos_userbundle
+#                login_path:                     /admin/login
+#                use_forward:                    false
+#                check_path:                     /admin/login_check
+#                failure_path:                   /admin/login
+#                default_target_path:            /admin/dashboard
+#                always_use_default_target_path: true
+#                use_referer:                    true
+#            logout:
+#                path:   /admin/logout
+#                target: /admin/login
+#            anonymous: true
+        frontend:
+            pattern: ^/(.*)
+            context: user
+            anonymous: true
+    access_control:
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
