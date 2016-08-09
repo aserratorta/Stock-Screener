@@ -14,17 +14,6 @@ use AppBundle\Tests\AbstractBaseTest;
 class BackendControllerTest extends AbstractBaseTest
 {
     /**
-     * Test admin login request is successful
-     */
-    public function testAdminLoginPageIsSuccessful()
-    {
-        $client = $this->createClient();           // anonymous user
-        $client->request('GET', '/admin/login');
-
-        $this->assertStatusCode(200, $client);
-    }
-
-    /**
      * Test HTTP request is successful
      *
      * @dataProvider provideSuccessfulUrls
