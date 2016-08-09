@@ -1,0 +1,87 @@
+# SuperSector
+AppBundle\Entity\SuperSector:
+  supersector1:
+    ticker: DJUSEN
+    title: "Oil & Gas Index"
+  supersector2:
+    ticker: DJUSCH
+    title: "Chemicals Index"
+  supersector3:
+    ticker: DJUSBS
+    title: "Basic Resources Index"
+  supersector4:
+    ticker: DJUSCN
+    title: "Construction & Materials Index"
+  supersector5:
+    ticker: DJUSIG
+    title: "Industrial Goods & Services Index"
+  supersector6:
+    ticker: DJUSAP
+    title: "Automobiles & Parts Index"
+  supersector7:
+    ticker: DJUSFB
+    title: "Food & Beverage Index"
+  supersector8:
+    ticker: DJUSNG
+    title: "Personal & Household Goods Index"
+  supersector9:
+    ticker: DJUSHC
+    title: "Health Care Index"
+  supersector10:
+    ticker: DJUSRT
+    title: "Retail Index"
+  supersector11:
+    ticker: DJUSME
+    title: "Media Index"
+  supersector12:
+    ticker: DJUSCG
+    title: "Travel & Leisure Index"
+  supersector13:
+    ticker: DJUSTL
+    title: "Telecommunications Index"
+  supersector14:
+    ticker: DJUSUT
+    title: "Utilities Index"
+  supersector15:
+    ticker: DJUSBK
+    title: "Banks Index"
+  supersector16:
+    ticker: DJUSIR
+    title: "Insurance Index"
+  supersector17:
+    ticker: DJUSRE
+    title: "Real Estate Index"
+  supersector18:
+    ticker: DJUSFI
+    title: "Financial Services Index"
+  supersector19:
+    ticker: DJUSTC
+    title: "Technology Index"
+
+## Sector
+#AppBundle\Entity\Sector:
+#  sector{1..20}:
+#    ticker: <streetSuffix()>
+#    title: <company()> <companySuffix()>
+#    supersector: @supersector<numberBetween(1, 10)>
+#
+## Stocks
+#AppBundle\Entity\Stock:
+#  stock{1..40}:
+#    ticker: <streetSuffix()>
+#    title: <company()> <companySuffix()>
+#    exchange: <word()>
+#    capamount: <numberBetween(1, 10000)>
+#    capcategory: <numberBetween(0, 2)>
+#    sector: @sector<numberBetween(1, 20)>
+#
+## Screeners
+#AppBundle\Entity\Screener:
+#  screener{1..5}:
+#    title(unique): <word()>
+#    value: <randomFloat(2, -200, 200)>
+#    sector: @sector<numberBetween(1, 20)>
+#  screener{6..10}:
+#    title(unique): <word()>
+#    value: <randomFloat(2, -200, 200)>
+#    stock: @stock<numberBetween(1, 40)>

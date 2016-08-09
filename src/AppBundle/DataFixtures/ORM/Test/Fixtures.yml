@@ -1,0 +1,33 @@
+# SuperSector
+AppBundle\Entity\SuperSector:
+  supersector{1..2}:
+    ticker: <cityPrefix()>
+    title: <catchPhrase()>
+
+# Sector
+AppBundle\Entity\Sector:
+  sector{1..4}:
+    ticker: <streetSuffix()>
+    title: <company()> <companySuffix()>
+    superSector: @supersector<numberBetween(1, 2)>
+
+# Stocks
+AppBundle\Entity\Stock:
+  stock{1..6}:
+    ticker: <streetSuffix()>
+    title: <company()> <companySuffix()>
+    exchange: <word()>
+    capAmount: <numberBetween(1, 10000)>
+    capCategory: <numberBetween(0, 2)>
+    sector: @sector<numberBetween(1, 4)>
+
+# Screeners
+AppBundle\Entity\Screener:
+  screener{1..2}:
+    title(unique): <word()>
+    value: <randomFloat(2, -200, 200)>
+    sector: @sector<numberBetween(1, 4)>
+  screener{3..4}:
+    title(unique): <word()>
+    value: <randomFloat(2, -200, 200)>
+    stock: @stock<numberBetween(1, 6)>

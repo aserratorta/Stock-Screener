@@ -1,24 +1,37 @@
-# To get started with security, check out the documentation:
-# http://symfony.com/doc/current/book/security.html
 security:
-
-    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+#    access_decision_manager:
+#        strategy: unanimous
     providers:
         in_memory:
             memory: ~
-
+#    encoders:
+#        FOS\UserBundle\Model\UserInterface: bcrypt
     firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
-        main:
-            anonymous: ~
-            # activate different ways to authenticate
-
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+#        admin:
+#            pattern: /admin(.*)
+#            context: user
+#            form_login:
+#                provider:                       fos_userbundle
+#                login_path:                     /admin/login
+#                use_forward:                    false
+#                check_path:                     /admin/login_check
+#                failure_path:                   /admin/login
+#                default_target_path:            /admin/dashboard
+#                always_use_default_target_path: true
+#                use_referer:                    true
+#            logout:
+#                path:   /admin/logout
+#                target: /admin/login
+#            anonymous: true
+        frontend:
+            pattern: ^/(.*)
+            context: user
+            anonymous: true
+    access_control:
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
