@@ -80,13 +80,13 @@ class StockAdmin extends AbstractBaseAdmin
                     'label' => 'capAmount',
                 )
             )
-            ->add(
-                'capCategory',
-                null,
-                array(
-                    'label' => 'capCategory',
-                )
-            )
+//            ->add(
+//                'capCategory',
+//                null,
+//                array(
+//                    'label' => 'capCategory',
+//                )
+//            )
             ->add(
                 'enabled',
                 'checkbox',
@@ -131,13 +131,13 @@ class StockAdmin extends AbstractBaseAdmin
                     'label' => 'capAmount',
                 )
             )
-            ->add(
-                'capCategory',
-                null,
-                array(
-                    'label' => 'capCategory',
-                )
-            )
+//            ->add(
+//                'capCategory',
+//                null,
+//                array(
+//                    'label' => 'capCategory',
+//                )
+//            )
             ->add(
                 'sector',
                 null,
@@ -185,14 +185,6 @@ class StockAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'exchange',
-                null,
-                array(
-                    'label' => 'Exchange',
-                    'editable' => true,
-                )
-            )
-            ->add(
                 'capAmount',
                 null,
                 array(
@@ -201,13 +193,21 @@ class StockAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'capCategory',
+                'exchange',
                 null,
                 array(
-                    'label' => 'capCategory',
+                    'label' => 'Exchange',
                     'editable' => true,
                 )
             )
+//            ->add(
+//                'capCategory',
+//                null,
+//                array(
+//                    'label' => 'capCategory',
+//                    'editable' => true,
+//                )
+//            )
             ->add(
                 'sector',
                 null,
