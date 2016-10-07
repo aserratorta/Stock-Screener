@@ -96,7 +96,7 @@ class ImportSectorCommand extends AbstractBaseCommand
                 $this->persistObject($sector_ticker_exist);
                 $itemsFound = $itemsFound + 1;
             }
-//            $output->writeln($sector_title);
+            $output->writeln($sector_title);
         }
         $output->writeln($itemsFound);
     }

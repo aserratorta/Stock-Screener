@@ -59,7 +59,7 @@ class ImportScreenerCommand extends AbstractBaseCommand
 
         // Command Vars
         $index           = 0;
-        $indexStart      = 1;
+        $indexStart      = 2;
         $this->em        = $this->getContainer()->get('doctrine.orm.default_entity_manager');
         $itemsFound      = 0;
 
@@ -73,27 +73,71 @@ class ImportScreenerCommand extends AbstractBaseCommand
                 continue;
             }
 
-            $ticker = (string)$this->loadColumnData(0, $data);
+//            $sector_ticker = (string)$this->loadColumnData(0, $data);
 //            $stock_ticker = (string)$this->loadColumnData(0, $data);
+//            $value  = (string)$this->loadColumnData(1, $data);
+//            $title = (string)$this->loadColumnData(2, $data);
+//
+//            $sector_ticker = $this->em->getRepository('AppBundle:Sector')->findOneBy(array('ticker'=> $sector_ticker ));
+//            $stock_ticker = $this->em->getRepository('AppBundle:Stock')->findOneBy(array('ticker'=> $stock_ticker));
+//
+//            if ($sector_ticker and $stock_ticker) {
+//
+//                //Find a ticker in sector and stock repository
+////                $sector_ticker_exist = $this->em->getRepository('AppBundle:Sector')->findOneBy(array('ticker'=> $sector_ticker));
+////                $stock_ticker_exist = $this->em->getRepository('AppBundle:Stock')->findOneBy(array('ticker'=> $stock_ticker));
+//
+//                $screener_ticker_exist = $this->em->getRepository('AppBundle:Sector')->findOneBy(array('ticker'=> $sector_ticker)) + $this->em->getRepository('AppBundle:Stock')->findOneBy(array('ticker'=> $stock_ticker));
+//
+//                //TODO si no existeix -> sector nou
+//
+//                if (!$screener_ticker_exist) {
+//
+//                    $screener_ticker_exist = new Screener();
+//                }
+//
+//                $screener_ticker_exist
+//                    ->setSector($sector_ticker)
+//                    ->setStock($stock_ticker)
+//                    ->setValue($value)
+//                    ->setTitle($title);
+//            }
+//                $this->persistObject($stock_ticker);
+//                $itemsFound = $itemsFound + 1;
+//                $output->writeln($stock_ticker . ' ' . $value . ' ' . $title);
+//        }
+//        $output->writeln($itemsFound);
+//    }
+            $screener_ticker = (string)$this->loadColumnData(0, $data);
             $value  = (string)$this->loadColumnData(1, $data);
             $title = (string)$this->loadColumnData(2, $data);
 
-            $sector_ticker = $this->em->getRepository('AppBundle:Sector')->findOneBy(array('ticker'=> $ticker ));
-            $stock_ticker = $this->em->getRepository('AppBundle:Stock')->findOneBy(array('ticker'=> $ticker ));
+            $screener_ticker = $this->em->getRepository('AppBundle:Sector')->findOneBy(array('ticker'=> $screener_ticker )) + $this->em->getRepository('AppBundle:Stock')->findOneBy(array('ticker'=> $screener_ticker));
 
-            if (!$sector_ticker and !$stock_ticker) {
+            if ($screener_ticker) {
 
-                $sector_ticker = new Screener();
+                //Find a ticker in sector and stock repository
+//                $sector_ticker_exist = $this->em->getRepository('AppBundle:Sector')->findOneBy(array('ticker'=> $sector_ticker));
+//                $stock_ticker_exist = $this->em->getRepository('AppBundle:Stock')->findOneBy(array('ticker'=> $stock_ticker));
 
-                $sector_ticker
-                    ->setSector($sector_ticker)
-                    ->setStock($stock_ticker)
+                $screener_ticker_exist = $this->em->getRepository('AppBundle:Sector')->findOneBy(array('ticker'=> $screener_ticker)) + $this->em->getRepository('AppBundle:Stock')->findOneBy(array('ticker'=> $screener_ticker));
+
+                //TODO si no existeix -> sector nou
+
+                if (!$screener_ticker_exist) {
+
+                    $screener_ticker_exist = new Screener();
+                }
+
+                $screener_ticker_exist
+                    ->setSector($screener_ticker)
+//                    ->setStock($screener_ticker)
                     ->setValue($value)
                     ->setTitle($title);
-                }
-                $this->persistObject($sector_ticker);
+            }
+                $this->persistObject($screener_ticker);
                 $itemsFound = $itemsFound + 1;
-//                $output->writeln($stock_ticker.' '.$stock_title);
+                $output->writeln($screener_ticker . ' ' . $value . ' ' . $title);
         }
         $output->writeln($itemsFound);
     }
