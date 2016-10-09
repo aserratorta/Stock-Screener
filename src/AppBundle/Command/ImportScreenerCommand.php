@@ -73,36 +73,28 @@ class ImportScreenerCommand extends AbstractBaseCommand
                 continue;
             }
 
-            $ticker = (string)$this->loadColumnData(0, $data);
+            $screener_ticker = (string)$this->loadColumnData(0, $data);
             $value  = (string)$this->loadColumnData(1, $data);
             $title = (string)$this->loadColumnData(2, $data);
 
-            $sector = $this->em->getRepository('AppBundle:Sector')->findOneBy(array('ticker'=> $ticker ));
-//            $stock_ticker = $this->em->getRepository('AppBundle:Stock')->findOneBy(array('ticker'=> $ticker));
+            $sector_ticker = $this->em->getRepository('AppBundle:Sector')->findOneBy(array('ticker'=> $screener_ticker));
+            $stock_ticker = $this->em->getRepository('AppBundle:Stock')->findOneBy(array('ticker'=> $screener_ticker));
+//            $screener = $this->em->getRepository('AppBundle:Screener')->findOneBy(array('ticker'=> $screener_ticker));
 
-            if ($sector) {
+//                if ($sector_ticker && $stock_ticker) {
+                        $screener = new Screener();
+                        $screener
+                            ->setTicker($screener_ticker)
+                            ->setSector($sector_ticker)
+                            ->setStock($stock_ticker)
+                            ->setValue($value)
+                            ->setTitle($title);
 
-                $screener = $this->em->getRepository('AppBundle:Screener')->findOneBy(array(
-                    'ticker' => $ticker,
-                    )
-                );
-
-                //TODO si no existeix -> sector nou
-
-//                if (!$screener) {
-//
-//                    $screener = new Screener();
+                        $this->persistObject($screener);
+                        $itemsFound = $itemsFound + 1;
 //                }
+            $output->writeln($screener_ticker . ' ' .$sector_ticker . ' ' . $stock_ticker . ' ' . $value . ' ' . $title);
 
-                $screener
-                    ->setSector($sector)
-//                    ->setStock($stock_ticker)
-                    ->setValue($value)
-                    ->setTitle($title);
-            }
-                $this->persistObject($sector);
-                $itemsFound = $itemsFound + 1;
-                $output->writeln($sector . ' ' . $value . ' ' . $title);
         }
         $output->writeln($itemsFound);
     }

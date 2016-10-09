@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Traits\TickerTrait;
 use AppBundle\Entity\Traits\TitleTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -19,9 +20,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Screener extends Base
 {
     use TitleTrait;
+    use TickerTrait;
 
     /**
-     * @var float
+     * @var string
      *
      * @ORM\Column(type="float")
      */

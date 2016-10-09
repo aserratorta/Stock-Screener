@@ -13,14 +13,27 @@ use Doctrine\ORM\EntityRepository;
  */
 class ScreenerRepository extends EntityRepository
 {
-    public function filterScreenersSortedByValue()
+//    public function filterScreenersSortedByValue()
+//    {
+//        $query = $this
+//            ->createQueryBuilder('sc')
+////            ->join('sc.stock', 'st')
+//            ->join('sc.sector', 'se')
+//            ->orderBy('sc.value', 'DESC')
+//        ;
+//
+//        return $query->getQuery()->getResult();
+//    }
+
+    /**
+     * @return array
+     */
+    public function findAllSectorsValueBiggerThanZero()
     {
-        $query = $this
-            ->createQueryBuilder('sc')
-//            ->join('sc.stock', 'st')
-            ->join('sc.sector', 'se')
-            ->orderBy('sc.value', 'DESC')
-        ;
+        $query = $this->createQueryBuilder('sc')
+            ->where('sc.value = :value' )
+            ->setParameter('value', true)
+            ->orderBy('sc.value', 'ASC');
 
         return $query->getQuery()->getResult();
     }
