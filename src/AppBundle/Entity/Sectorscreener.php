@@ -8,16 +8,16 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Screener Entity Class
+ * Sectorscreener Entity Class
  *
  * @category Entity
  * @package  AppBundle\Entity
  * @author   Anton Serra <aserratorta@gmail.com>
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ScreenerRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\SectorscreenerRepository")
  */
-class Screener extends Base
+class Sectorscreener extends Base
 {
     use TitleTrait;
     use TickerTrait;
@@ -32,16 +32,9 @@ class Screener extends Base
     /**
      * @var Sector
      *
-     * @ORM\ManyToOne(targetEntity="Sector", inversedBy="screeners")
+     * @ORM\ManyToOne(targetEntity="Sector", inversedBy="sectorScreeners")
      */
     private $sector;
-
-    /**
-     * @var Stock
-     *
-     * @ORM\ManyToOne(targetEntity="Stock", inversedBy="screeners")
-     */
-    private $stock;
 
     /**
      *
@@ -61,7 +54,8 @@ class Screener extends Base
 
     /**
      * @param float $value
-     * @return Screener
+     *
+     * @return Sectorscreener
      */
     public function setValue($value)
     {
@@ -70,24 +64,6 @@ class Screener extends Base
         return $this;
     }
 
-    /**
-     * @return Stock
-     */
-    public function getStock()
-    {
-        return $this->stock;
-    }
-
-    /**
-     * @param Stock $stock
-     * @return Screener
-     */
-    public function setStock($stock)
-    {
-        $this->stock = $stock;
-
-        return $this;
-    }
 
     /**
      * @return Sector
@@ -99,7 +75,8 @@ class Screener extends Base
 
     /**
      * @param Sector $sector
-     * @return Screener
+     *
+     * @return Sectorscreener
      */
     public function setSector($sector)
     {
@@ -112,6 +89,4 @@ class Screener extends Base
     {
         return $this->getTitle();
     }
-
-
 }

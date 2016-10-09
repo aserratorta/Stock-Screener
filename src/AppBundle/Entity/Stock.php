@@ -51,10 +51,10 @@ class Stock extends Base
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Screener", mappedBy="stock")
+     * @ORM\OneToMany(targetEntity="Stockscreener", mappedBy="stock")
      * @ORM\OrderBy({"value" = "DESC"})
      */
-    private $screeners;
+    private $stockScreeners;
 
     /**
      *
@@ -143,41 +143,42 @@ class Stock extends Base
     /**
      * @return ArrayCollection
      */
-    public function getScreeners()
+    public function getStockScreeners()
     {
-        return $this->screeners;
+        return $this->stockScreeners;
     }
 
     /**
-     * @param ArrayCollection $screeners
+     * @param ArrayCollection $stockScreeners
+     *
      * @return Stock
      */
-    public function setScreeners(ArrayCollection $screeners)
+    public function setScreeners(ArrayCollection $stockScreeners)
     {
-        $this->screeners = $screeners;
+        $this->stockScreeners = $stockScreeners;
 
         return $this;
     }
 
-    /* @param Screener $screener
+    /* @param Stockscreener $stockScreener
      *
      * @return $this
      */
-    public function addScreener(Screener $screener)
+    public function addStockScreener(Stockscreener $stockScreener)
     {
-        $screener->setStock($this);
-        $this->screeners->add($screener);
+        $stockScreener->setStock($this);
+        $this->stockScreeners->add($stockScreener);
 
         return $this;
     }
 
-    /* @param Screener $screener
+    /* @param Stockscreener $stockScreener
      *
      * @return $this
      */
-    public function removeScreener(Screener $screener)
+    public function removeStockScreener(Stockscreener $stockScreener)
     {
-        $this->screeners->removeElement($screener);
+        $this->stockScreeners->removeElement($stockScreener);
 
         return $this;
     }

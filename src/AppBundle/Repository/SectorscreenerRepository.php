@@ -5,13 +5,13 @@ namespace AppBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class ScreenerRepository
+ * Class SectorscreenerRepository
  *
  * @category Repository
  * @package  AppBundle\Repository
  * @author   Anton Serra <aserratorta@gmail.com>
  */
-class ScreenerRepository extends EntityRepository
+class SectorscreenerRepository extends EntityRepository
 {
 //    public function filterScreenersSortedByValue()
 //    {

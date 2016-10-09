@@ -38,9 +38,9 @@ class Sector extends Base
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Screener", mappedBy="sector")
+     * @ORM\OneToMany(targetEntity="Sectorscreener", mappedBy="sector")
      */
-    private $screeners;
+    private $sectorScreeners;
 
     /**
      *
@@ -56,7 +56,7 @@ class Sector extends Base
     public function __construct()
     {
         $this->stocks = new ArrayCollection();
-        $this->screeners = new ArrayCollection();
+        $this->sectorScreeners = new ArrayCollection();
     }
 
     /**
@@ -99,18 +99,19 @@ class Sector extends Base
     /**
      * @return ArrayCollection
      */
-    public function getScreeners()
+    public function getSectorScreeners()
     {
-        return $this->screeners;
+        return $this->sectorScreeners;
     }
 
     /**
-     * @param ArrayCollection $screeners
+     * @param ArrayCollection $sectorScreeners
+     *
      * @return Sector
      */
-    public function setScreeners(ArrayCollection $screeners)
+    public function setSectorScreeners($sectorScreeners)
     {
-        $this->screeners = $screeners;
+        $this->sectorScreeners = $sectorScreeners;
 
         return $this;
     }
@@ -138,25 +139,25 @@ class Sector extends Base
         return $this;
     }
 
-    /* @param Screener $screener
+    /* @param Sectorscreener $sectorScreeners
      *
      * @return $this
      */
-    public function addScreener(Screener $screener)
+    public function addSectorScreener(Sectorscreener $sectorScreeners)
     {
-        $screener->setSector($this);
-        $this->screeners->add($screener);
+        $sectorScreeners->setSector($this);
+        $this->sectorScreeners->add($sectorScreeners);
 
         return $this;
     }
 
-    /* @param Screener $screener
+    /* @param Sectorscreener $sectorScreeners
      *
      * @return $this
      */
-    public function removeScreener(Screener $screener)
+    public function removeSectorScreener(Sectorscreener $sectorScreeners)
     {
-        $this->screeners->removeElement($screener);
+        $this->sectorScreeners->removeElement($sectorScreeners);
 
         return $this;
     }
