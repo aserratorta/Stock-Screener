@@ -104,6 +104,8 @@ sonata_admin:
                 icon: "<i class='fa fa-microphone' aria-hidden='true'></i>"
             Screener:
                 icon: "<i class='fa fa-microphone' aria-hidden='true'></i>"
+#            Stockscreener:
+#                icon: "<i class='fa fa-microphone' aria-hidden='true'></i>"
         blocks:
             -
                 position: top
@@ -117,7 +119,13 @@ sonata_admin:
                 type: sonata.admin.block.admin_list
                 class: col-md-6
                 settings:
-                    groups: [ SuperSector, Sector, Stock, Screener ]
+                    groups: [ SuperSector, Sector, Stock ]
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+                class: col-md-6
+                settings:
+                    groups: [ Screener ]
             -
                 position: right
                 type: admin.block.screener

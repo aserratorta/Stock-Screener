@@ -8,13 +8,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Class ScreenerAdminController
+ * Class StockscreenerAdminController
  *
  * @category Controller
  * @package  AppBundle\Controller\Admin
  * @author   David Romaní <david@flux.cat>
  */
-class ScreenerAdminController extends BaseAdminController
+class StockscreenerAdminController extends BaseAdminController
 {
     /**
      * Filter action
@@ -28,7 +28,7 @@ class ScreenerAdminController extends BaseAdminController
      */
     public function filterAction(Request $request = null)
     {
-        $screenersList = $this->getDoctrine()->getRepository('AppBundle:Screener')->filterScreenersSortedByValue();
+        $stockScreenersList = $this->getDoctrine()->getRepository('AppBundle:Stockscreener')->filterScreenersSortedByValue();
 
         return $this->render(
             '::Admin/Filters/filters_form.html.twig',
@@ -36,7 +36,7 @@ class ScreenerAdminController extends BaseAdminController
                 'action'   => 'show',
                 'object'   => array(),
                 'elements' => $this->admin->getShow(),
-                'screenersList' => $screenersList,
+                'stockScreenersList' => $stockScreenersList,
             ),
             null,
             $request

@@ -8,16 +8,16 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 
 /**
- * Class ScreenerAdmin
+ * Class SectorscreenerAdmin
  *
  * @category Admin
  * @package  AppBundle\Admin
  * @author   Anton Serra <aserratorta@gmail.com>
  */
-class ScreenerAdmin extends AbstractBaseAdmin
+class SectorscreenerAdmin extends AbstractBaseAdmin
 {
-    protected $classnameLabel = 'Screener';
-    protected $baseRoutePattern = 'screeners/screener';
+    protected $classnameLabel = 'Sector Screener';
+    protected $baseRoutePattern = 'screeners/sector-screener';
     protected $datagridValues = array(
         '_sort_by'    => 'title',
         '_sort_order' => 'desc',
@@ -45,6 +45,13 @@ class ScreenerAdmin extends AbstractBaseAdmin
         $formMapper
             ->with('General', $this->getFormMdSuccessBoxArray(7))
             ->add(
+                'ticker',
+                null,
+                array(
+                    'label' => 'Ticker',
+                )
+            )
+            ->add(
                 'title',
                 null,
                 array(
@@ -56,13 +63,6 @@ class ScreenerAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'Sector',
-                )
-            )
-            ->add(
-                'stock',
-                null,
-                array(
-                    'label' => 'Stock',
                 )
             )
             ->add(
@@ -144,21 +144,6 @@ class ScreenerAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'Super Sector',
-                    'editable' => true,
-                )
-            )
-            ->add(
-                'stock.ticker',
-                null,
-                array(
-                    'label' => 'Ticker',
-                )
-            )
-            ->add(
-                'stock',
-                null,
-                array(
-                    'label' => 'Stock',
                     'editable' => true,
                 )
             )

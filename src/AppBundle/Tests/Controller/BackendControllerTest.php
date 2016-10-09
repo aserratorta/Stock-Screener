@@ -48,9 +48,12 @@ class BackendControllerTest extends AbstractBaseTest
             array('/admin/screeners/stock/create'),
             array('/admin/screeners/stock/1/delete'),
             array('/admin/screeners/stock/1/edit'),
-            array('/admin/screeners/screener/list'),
-            array('/admin/screeners/screener/create'),
-            array('/admin/screeners/screener/1/delete'),
+            array('/admin/screeners/sector-screener/list'),
+            array('/admin/screeners/sector-screener/create'),
+            array('/admin/screeners/sector-screener/1/delete'),
+            array('/admin/screeners/stock-screener/list'),
+            array('/admin/screeners/stock-screener/create'),
+            array('/admin/screeners/stock-screener/1/delete'),
         );
     }
 
@@ -79,7 +82,8 @@ class BackendControllerTest extends AbstractBaseTest
             array('/admin/screeners/supersector/batch'),
             array('/admin/screeners/sector/batch'),
             array('/admin/screeners/stock/batch'),
-            array('/admin/screeners/screener/batch'),
+            array('/admin/screeners/sector-screener/batch'),
+            array('/admin/screeners/stock-screener/batch'),
         );
     }
 }

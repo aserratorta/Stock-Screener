@@ -15,11 +15,16 @@ services:
         arguments: [ ~ , AppBundle\Entity\Stock , ~ ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Stock", group: "Stock" }
-    admin.screener:
-        class: AppBundle\Admin\ScreenerAdmin
-        arguments: [ ~ , AppBundle\Entity\Screener, AppBundle:Admin\ScreenerAdmin ]
+    admin.sectorscreener:
+        class: AppBundle\Admin\SectorscreenerAdmin
+        arguments: [ ~ , AppBundle\Entity\Sectorscreener, AppBundle:Admin\SectorscreenerAdmin ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Screener", group: "Screener" }
+            - { name: sonata.admin, manager_type: orm, label: "Sector Screener", group: "Screener" }
+    admin.stockscreener:
+        class: AppBundle\Admin\StockscreenerAdmin
+        arguments: [ ~ , AppBundle\Entity\Stockscreener, AppBundle:Admin\StockscreenerAdmin ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Stock Screener", group: "Screener" }
 # Sonata Blocks
     admin.block.screener:
         class: AppBundle\Admin\Block\MyBlock
